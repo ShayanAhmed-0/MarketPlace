@@ -7,6 +7,11 @@ export const product = {
   title: "Product",
   fields: [
     {
+      name: "id",
+      titel: "id",
+      type: "number",
+    },
+    {
       name: "title",
       titel: "Title",
       type: "string",
