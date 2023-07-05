@@ -10,16 +10,16 @@ const navbar = () => {
     <div className="flex items-center justify-between mx-10 my-6">
         <Image src={logo} alt="navbarImg" />
         <ul className="flex text-lg font-semibold gap-x-10">
-          <Link href={"/Female"}>
+          <Link href={"/Category/Female"}>
           <li>Female</li>
           </Link>
-          <Link href={"/Male"}>
+          <Link href={"/Category/Male"}>
           <li>Male</li>
           </Link >
-          <Link href={"/Kids"}>
+          <Link href={"/Category/Kids"}>
           <li>Kids</li>
           </Link>
-          <Link href={"/Products"}>
+          <Link href={"/Category/All"}>
           <li>All Products</li>
           </Link>
         </ul>
