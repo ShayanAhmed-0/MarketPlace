@@ -3,12 +3,15 @@ import {db,cartTable} from "@/lib/drizzle"
 
 import {v4 as uuid} from "uuid"
 import { cookies } from "next/headers"
+import {eq} from "drizzle-orm"
 
 
 export const GET=async(request:NextRequest)=>{
+    const user=cookies().get("user_id")?.value as string
+    console.log(user)
 try {
-    const res = await db.select().from(cartTable)
-    return NextResponse.json({res})
+    const res = await db.select().from(cartTable).where(eq(cartTable.user_id,user))
+    return NextResponse.json({user})
 } catch (error) {
     return NextResponse.json({message:"somethings wrong on cart get"})
 }
@@ -17,8 +20,8 @@ try {
 export const POST=async(request:NextRequest)=>{
     const req = await request.json()
     const uid=uuid()
+    const user_id=cookies().get("user_id")
     const setCookies=cookies()
-const user_id=cookies().get("user_id")
     if(!user_id){
         setCookies.set("user_id",uid)
     }

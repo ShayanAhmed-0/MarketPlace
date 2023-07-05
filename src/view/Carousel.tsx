@@ -45,7 +45,7 @@ const Carousel = async() => {
      <>
      <div className='grid justify-center grid-cols-[auto,auto,auto] gap-10'>
         {data.map((item) => (
-         <div>
+         <div key={item._id}>
           <ProductCard item={item}/>
          </div>
         ))}
