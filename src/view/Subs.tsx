@@ -18,7 +18,7 @@ const Subs = () => {
           <Button className="hidden text-white bg-black sm:flex">Get Started</Button>
         </div>
         <div className="flex justify-center sm:hidden">
-          <Button className="justify-center text-white bg-black ">Get Started</Button>
+          <Button className="justify-center mt-4 text-white bg-black ">Get Started</Button>
         </div>
           
       </div>

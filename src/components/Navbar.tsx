@@ -60,9 +60,8 @@ const Navbar = () => {
         )}
       </div>
 
-<button className="absolute lg:hidden right-8" onClick={()=>{
-  open?setOpen(false):setOpen(true)
-}}>
+<button className="absolute lg:hidden right-8" onClick={()=>open?setOpen(false):setOpen(true)
+}>
 {
   open?(
     <IoCloseOutline size={22}/>

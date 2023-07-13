@@ -7,7 +7,7 @@ import Subs from './Subs'
 
 const HomePage = () => {
   return (
-    <div>
+    <div className='mx-4'>
        <Hero/>
    <Promotions/>
   <Carousel/>
