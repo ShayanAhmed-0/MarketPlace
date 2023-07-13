@@ -3,9 +3,8 @@
 import Image from "next/image";
 import logo from "/public/logo.webp"
 import Link from "next/link";
-// import { ShoppingCart } from "react-icons/lu";
 import {BiSearch,BiCart} from "react-icons/bi"
-import { useUser, SignedOut, UserButton } from "@clerk/nextjs";
+import { useUser, UserButton } from "@clerk/nextjs";
 import { Button } from "./ui/button";
 import {LuAlignRight} from "react-icons/lu"
 import {IoCloseOutline} from "react-icons/io5"
@@ -13,10 +12,12 @@ import { useState } from "react";
 
 const Navbar = () => {
   const [open,setOpen] =useState(false)
-  const { isLoaded, isSignedIn, user } = useUser();
+  const { isSignedIn } = useUser();
   return (
     <div className="flex items-center justify-between mx-8 my-6">
+      <Link href={"/"}>
       <Image src={logo} alt="navbarImg" />
+      </Link>
       <ul className="hidden text-lg font-semibold lg:flex gap-x-10 ">
         <Link href={"/Category/Female"}>
           <li>Female</li>

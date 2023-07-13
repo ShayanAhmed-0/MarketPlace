@@ -1,8 +1,9 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import Navbar from "@/components/Navbar"
-import { ClerkProvider } from '@clerk/nextjs'
+import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { ClerkProvider } from '@clerk/nextjs'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,17 +18,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <ClerkProvider>
     <html lang="en">
     <body className={inter.className}>
-      <Navbar />
-      {/* Homepage */}
-      <main className='px-8'>
+<ClerkProvider  publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
+      <main>
+        <Navbar/>
         {children}
+        <Footer/>
       </main>
-      <Footer/>
+</ClerkProvider>
     </body>
   </html>
-    </ClerkProvider>
   )
 }
