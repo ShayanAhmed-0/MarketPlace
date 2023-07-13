@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import logo from "/public/logo.webp";
+import logo from "/public/logo.webp"
 import Link from "next/link";
 // import { ShoppingCart } from "react-icons/lu";
 import {BiSearch,BiCart} from "react-icons/bi"

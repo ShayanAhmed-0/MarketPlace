@@ -1,7 +1,7 @@
 import React from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {ShoppingCart} from "lucide-react"
+import {LuShoppingCart} from "react-icons/lu"
 import Image from "next/image";
 import header from "/public/header.webp"
 import featured1 from "/public/Featured/Featured1.webp"
@@ -27,8 +27,8 @@ const Hero = () => {
           Anyone can beat you but no one can beat your outfit as long as you
           wear Dine outfits.
         </p>
-        <Button variant="secondary" className= "flex-1 h-12 mt-4 text-white bg-zinc-800">
-            <ShoppingCart/>
+        <Button className= "flex-1 h-12 mt-4 text-white bg-zinc-800">
+            <LuShoppingCart/>
             <p className="mx-2">
             Start Shopping
             </p>
