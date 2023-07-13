@@ -70,7 +70,7 @@ const Carousel = async() => {
             };
     return (
      <>
-      <div className="my-4 mt-24 sm:mt-36 md:mt-0">
+      <div className="my-4 mt-24">
         <h1 className="flex justify-center text-sm font-bold text-blue-700">
           PROMOTIONS
         </h1>

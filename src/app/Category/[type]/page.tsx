@@ -58,7 +58,7 @@ const page = async ({ params }: { params: { type: string } }) => {
     return (
      <>
      <h1>{params.type}</h1>
-     <div className='grid justify-center grid-cols-[auto,auto,auto] gap-10'>
+     <div className='grid justify-center grid-cols-[auto,auto,auto] gap-10 '>
         {data.map((item) => (
          <div key={item.id}>
           <ProductCard item={item}/>
