@@ -24,7 +24,7 @@ const Promotions = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2">
               <div className="flex items-center mx-4">
                 <div>
-                  <h1 className="text-3xl font-bold ">GET UPTO 60%</h1>
+                  <h1 className="p-2 text-3xl font-bold">GET UPTO 60%</h1>
                   <h2 className="">For the summer season</h2>
                 </div>
               </div>
@@ -43,11 +43,10 @@ const Promotions = () => {
           </div>
         </div>
 
-        <div className="flex justify-center mx-5 mb-5">
-
-          <div className="flex justify-center gap-5 sm:inline-flex">
-
-            <div className="mt-4 bg-orange-100">
+        <div className="sm:flex">
+  
+              <div className="flex justify-center w-full">
+            <div className="mt-4 bg-orange-100 ">
               <div className="px-2 mt-4">
               <h1 className="">Flex Sweatshirt</h1>
                 <del>$100.00</del>
@@ -56,8 +55,10 @@ const Promotions = () => {
               <div className="pt-16 lg:pt-0">
                 <Image src={event2} alt="event1" className="bottom-0" />
               </div>
+              </div>
             </div>
 
+            <div className="flex justify-center w-full">
             <div className="mt-4 bg-gray-300">
               <div className="px-2 mt-4">
               <h1 className="">Flex Push Button Bomber</h1>
@@ -68,19 +69,8 @@ const Promotions = () => {
                 <Image src={event3} alt="event1" className="bottom-0" />
               </div>
             </div>
+            </div>
 
-            {/* <div className="mt-4 bg-gray-300 ">
-              <h1 className="px-2 pt-4">Flex Push Button Bomber</h1>
-              <div className="flex items-center px-2">
-                <del>$225.00</del>
-                <h1 className="text-xl font-bold">$190.00</h1>
-              </div>
-              <div className="flex justify-center">
-                <Image src={event3} alt="event1" />
-              </div>
-            </div> */}
-
-          </div>
         </div>
       </div>
     </div>
