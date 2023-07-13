@@ -39,12 +39,34 @@ const page = async ({ params }: { params: { id: string } }) => {
   const res = data[0]
   return (
     <div>
-        category:{res.category.name}
+        <h1 className="flex justify-center text-2xl">
+          category:
+          <span className="font-bold">
+            {res.category.name}
+            </span>
+          </h1>
+          <div>
         <Image src={urlForImage(res.image).url()}
         alt="Card Image"
         width={400}
         height={300}
         />
+        <Image src={urlForImage(res.image).url()}
+        alt="Card Image"
+        width={400}
+        height={300}
+        />
+        <Image src={urlForImage(res.image).url()}
+        alt="Card Image"
+        width={400}
+        height={300}
+        />
+        <Image src={urlForImage(res.image).url()}
+        alt="Card Image"
+        width={400}
+        height={300}
+        />
+        </div>
      <h1>
      Title: {res.title}
      </h1>
