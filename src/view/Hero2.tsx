@@ -1,6 +1,6 @@
 import Image from "next/image";
 import feature from "/public/feature.webp";
-import { Button } from "../../components/ui/button";
+import { Button } from "../components/ui/button";
 
 const Hero2 = () => {
   return (

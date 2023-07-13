@@ -1,9 +1,9 @@
 import React from 'react'
-import Hero from './Home/Hero'
-import Promotions from './Home/Promotions'
-import Carousel from './Home/Carousel'
-import Hero2 from './Home/Hero2'
-import Subs from './Home/Subs'
+import Hero from './Hero'
+import Promotions from './Promotions'
+import Carousel from './Carousel'
+import Hero2 from './Hero2'
+import Subs from './Subs'
 
 const HomePage = () => {
   return (
