@@ -1,6 +1,6 @@
 import Image from "next/image";
 import feature from "/public/feature.webp";
-import { Button } from "../components/ui/button";
+import { Button } from "../../components/ui/button";
 
 const Hero2 = () => {
   return (
@@ -17,8 +17,8 @@ const Hero2 = () => {
 
       {/* 3grid cols */}
 
-      <div className="grid grid-cols-1 mt-4 md:grid-cols-2">
-        <div className="flex items-center justify-center">
+      <div className="grid grid-cols-1 gap-10 mt-4 md:grid-cols-2">
+        <div className="flex items-center justify-center space-y-10">
           {/* 4cols of details */}
           <div className="space-y-20">
             <div className="flex space-x-10">
@@ -52,7 +52,7 @@ const Hero2 = () => {
         </div>
         <div>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-            <div>
+            <div className="flex justify-center">
               <Image src={feature} alt="Image" />
             </div>
 

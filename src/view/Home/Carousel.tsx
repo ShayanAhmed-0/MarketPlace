@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import {client} from "@/lib/sanityClient" 
 import { Image as IImage} from 'sanity'
-import { urlForImage } from '../../sanity/lib/image'
+import { urlForImage } from '../../../sanity/lib/image'
 import ProductCard from '@/components/ProductCard';
 import React from "react";
 import Slider from "react-slick";
@@ -48,14 +48,6 @@ interface IProduct {
 const Carousel = async() => {
     const data:IProduct[]=await getProductData()
 
-    // const carouselImages = [
-    //           "https://i.ibb.co/fDngH9G/carosel-1.png",
-    //           "https://i.ibb.co/DWrGxX6/carosel-2.png",
-    //           "https://i.ibb.co/tCfVky2/carosel-3.png",
-    //           "https://i.ibb.co/rFsGfr5/carosel-4.png",
-    //         ];
-    // console.log(data)
-
     const settings = {
               dots: true,
               autoplay:true,
@@ -77,13 +69,9 @@ const Carousel = async() => {
             };
     return (
      <>
-      <div className="my-4 mt-24 sm:mt-36 md:mt-0">
-        <h1 className="flex justify-center text-sm font-bold text-blue-700">
-          PROMOTIONS
-        </h1>
-        <p className="flex justify-center my-4 text-3xl font-bold">
-          Our Promotional Events
-        </p>
+      <div className="my-4 mt-24 sm:mt-36 md:mt-10">
+        <h1 className="flex justify-center text-sm font-bold text-blue-700">PRODUCTS</h1>
+        <p className="flex justify-center my-4 text-3xl font-bold">Check What We Have</p>
       </div>
 
       <div className="">
