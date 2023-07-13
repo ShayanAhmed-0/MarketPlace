@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {ShoppingCart} from "lucide-react"
 import Image from "next/image";
-import header from "/public/header.png"
+import header from "/public/header.webp"
 import featured1 from "/public/Featured/Featured1.webp"
 import featured2 from "/public/Featured/Featured2.webp"
 import featured3 from "/public/Featured/Featured3.webp"
@@ -11,9 +11,12 @@ import featured4 from "/public/Featured/Featured4.webp"
 
 const Hero = () => {
   return (
-    <section className="flex py-6 gap-y-10 ">
+    <section className="flex py-6 gap-y-10">
         {/* left div */}
-      <div className="flex-1">
+        <div className="absolute bg-orange-100 rounded-full md:hidden">
+<Image className="rounded-full" src={header} alt="header"/>
+      </div>
+      <div className="relative flex-1">
         <Badge className="mt-16 text-blue-700 bg-blue-100 text-md rounded-xl">
           Sale 70%
         </Badge>
@@ -30,8 +33,8 @@ const Hero = () => {
             Start Shopping
             </p>
             </Button>
-
-            <div className="flex gap-5 mt-10">
+            {/* grid grid-cols-1 gap-5 mt-10 md:grid-cols-2 lg:grid-sols:4 */}
+            <div className="flex gap-5 mt-10 ">
                 <Image src={featured1} alt="featured1"/>
                 <Image src={featured2} alt="featured2"/>
                 <Image src={featured3} alt="featured3"/>
@@ -40,7 +43,7 @@ const Hero = () => {
       </div>
 
 {/* right div */}
-      <div className="hidden md:flex">
+      <div className="hidden bg-orange-100 rounded-full md:flex ">
 <Image className="rounded-full" src={header} alt="header"/>
       </div>
     </section>

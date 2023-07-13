@@ -6,6 +6,7 @@ import ProductCard from '../components/ProductCard';
 import Carousel from '@/view/Carousel';
 import Hero from '@/view/Hero';
 import Promotions from '@/view/Promotions';
+import Hero2 from '@/view/Hero2';
 
 
 export default async function Home() {
@@ -15,6 +16,7 @@ export default async function Home() {
    <Hero/>
    <Promotions/>
   <Carousel/>
+  <Hero2/>
    </>
   )
 }
