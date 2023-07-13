@@ -8,7 +8,7 @@ import event3 from "/public/event3.webp";
 const Promotions = () => {
   return (
     <div>
-      <div className="my-4">
+      <div className="my-4 mt-24 sm:mt-36 md:mt-0">
         <h1 className="flex justify-center text-sm font-bold text-blue-700">
           PROMOTIONS
         </h1>
@@ -18,16 +18,21 @@ const Promotions = () => {
       </div>
 
       <div className="grid h-full grid-cols-1 md:grid-cols-2">
-        <div>
-          <div className="flex items-center justify-between px-8 my-4 bg-gray-300">
-            <div className="">
-              <h1 className="text-3xl font-bold">GET UPTO 60%</h1>
-              <p className="block">For the summer season</p>
+        <div className="mt-4 space-y-5 ">
+
+          <div className="flex justify-center bg-gray-300">
+            <div className="grid grid-cols-1 sm:grid-cols-2">
+              <div className="flex items-center mx-4">
+                <div>
+                  <h1 className="text-3xl font-bold ">GET UPTO 60%</h1>
+                  <h2 className="">For the summer season</h2>
+                </div>
+              </div>
+              <Image src={event1} alt="event1" />
             </div>
-            <Image src={event1} alt="event1" />
           </div>
 
-          <div className="flex items-center justify-center px-8 py-2 text-white bg-black">
+          <div className="flex items-center justify-center px-8 py-6 text-white bg-black">
             <div>
               <h1 className="text-3xl font-bold">GET 30% Off</h1>
               <p className="mx-5 mt-5">USE PROMO CODE</p>
@@ -39,19 +44,32 @@ const Promotions = () => {
         </div>
 
         <div className="flex justify-center mx-5 mb-5">
-          <div className="flex-row justify-center gap-5 sm:inline-flex">
-            <div className="w-full mt-4 bg-orange-800">
-              <h1 className="px-2 pt-4">Flex Sweatshirt</h1>
-              <div className="flex items-center px-2">
+
+          <div className="flex justify-center gap-5 sm:inline-flex">
+
+            <div className="mt-4 bg-orange-100">
+              <div className="px-2 mt-4">
+              <h1 className="">Flex Sweatshirt</h1>
                 <del>$100.00</del>
-                <h1 className="text-xl font-bold">$75.00</h1>
+                <span className="text-xl font-bold">$75.00</span>
               </div>
-              <div className="flex justify-center ">
+              <div className="pt-16 lg:pt-0">
                 <Image src={event2} alt="event1" className="bottom-0" />
               </div>
             </div>
 
-            <div className="w-full mt-4 bg-gray-300">
+            <div className="mt-4 bg-gray-300">
+              <div className="px-2 mt-4">
+              <h1 className="">Flex Push Button Bomber</h1>
+              <del>$225.00</del>
+                <span className="text-xl font-bold">$190.00</span>
+              </div>
+              <div className="pt-8 lg:pt-0">
+                <Image src={event3} alt="event1" className="bottom-0" />
+              </div>
+            </div>
+
+            {/* <div className="mt-4 bg-gray-300 ">
               <h1 className="px-2 pt-4">Flex Push Button Bomber</h1>
               <div className="flex items-center px-2">
                 <del>$225.00</del>
@@ -60,7 +78,8 @@ const Promotions = () => {
               <div className="flex justify-center">
                 <Image src={event3} alt="event1" />
               </div>
-            </div>
+            </div> */}
+
           </div>
         </div>
       </div>
