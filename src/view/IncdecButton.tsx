@@ -9,6 +9,7 @@ const IncdecButton = () => {
   return (
     <div className='flex items-center mt-10 gap-x-4'>
 
+<h1 className='text-xl font-bold'>Quantity:</h1>
 <button className='p-2 pl-4 pr-4 bg-blue-300 rounded-2xl' onClick={()=>{number>1?setNumber(number-1):setNumber(1)}}>
         <GrSubtract/>
       </button>

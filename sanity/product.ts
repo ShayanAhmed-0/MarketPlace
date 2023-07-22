@@ -1,4 +1,4 @@
-import { defineType, defineField } from "sanity";
+import { defineType, defineField  } from "sanity";
 // import { category } from "./category";
 
 export const product = {
@@ -14,6 +14,11 @@ export const product = {
     {
       name: "title",
       titel: "Title",
+      type: "string",
+    },
+    {
+      name: "type",
+      titel: "Type",
       type: "string",
     },
     {
@@ -41,5 +46,17 @@ export const product = {
       titel: "product Image",
       type: "image",
     },
+    {
+      title: 'image',
+      name: 'productImage',
+      type: 'array',
+      of: [{type: 'image'}]
+    },
+    {
+      title: 'carepoints',
+      name: 'productcare',
+      type: 'array',
+      of: [{type: 'string'}]
+    }
   ],
 };

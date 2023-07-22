@@ -1,84 +1,162 @@
+// Import required modules and components
 import Image from "next/image";
 import { client } from "@/lib/sanityClient";
 import { Image as IImage } from "sanity";
 import { urlForImage } from "../../../../sanity/lib/image";
 import ProductCard from "@/components/ProductCard";
 import IncdecButton from "@/view/IncdecButton";
+import AddToCart from "@/components/AddtoCart";
 
-const page = async ({ params }: { params: { id: string } }) => {
+// Define the type for the product image object
+interface IProductImage extends IImage {
+  _type: string;
+  _key: string;
+  asset: {
+    _ref: string;
+    _type: string;
+  };
+}
+
+// Define the type for the product data
+interface IProduct {
+  productImage: IImage[];
+  price: number;
+  title: string;
+  type: string;
+  id: number;
+  category: {
+    name: string;
+  };
+  productcare: string[];
+  description: string;
+}
+
+interface ImageAsset {
+  _ref: string;
+  _type: "reference";
+}
+
+interface ImageItem {
+  _type: "image";
+  _key: string;
+  asset: ImageAsset;
+}
+// Define the page component
+const Page = async ({ params }: { params: { id: string } }) => {
   const getProductData = async () => {
     const res = await client.fetch(
       `*[_type=="product" && id == ${params.id}]{
-            id,
-            price,
-            _id,
-            description,
-            title,
-            image,
-            category -> {
-              name
-            }
-          }`
+        type,
+        id,
+        price,
+        _id,
+        description,
+        productcare,
+        title,
+        image,
+        category -> {
+          name
+        },
+        productImage
+      }`
     );
     return res;
   };
 
-  interface IProduct {
-    id: number;
-    price: number;
-    _id: string;
-    description: string;
-    title: string;
-    image: IImage;
-    category: {
-      name: string;
-    };
-  }
-
   const data: IProduct[] = await getProductData();
-  const res = data[0]
+  const res = data[0];
+
   return (
-    <div>
-        <h1 className="flex justify-center text-2xl">
-          category:
-          <span className="font-bold">
-            {res.category.name}
-            </span>
-          </h1>
-          <div>
-        <Image src={urlForImage(res.image).url()}
-        alt="Card Image"
-        width={400}
-        height={300}
-        />
-        <Image src={urlForImage(res.image).url()}
-        alt="Card Image"
-        width={400}
-        height={300}
-        />
-        <Image src={urlForImage(res.image).url()}
-        alt="Card Image"
-        width={400}
-        height={300}
-        />
-        <Image src={urlForImage(res.image).url()}
-        alt="Card Image"
-        width={400}
-        height={300}
-        />
+    <div className="wrapper">
+      <h1 className="flex justify-center text-2xl">
+        category:<span className="font-bold">{res.category.name}</span>
+      </h1>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2">
+        <div className="flex justify-center gap-4 mx-4">
+          <div className="space-y-4">
+            {res.productImage.map((item: ImageItem | any) => (
+              <div key={item._key}>
+                <Image
+                  className=""
+                  src={urlForImage(item).url()}
+                  alt="Card Image"
+                  width={100}
+                  height={100}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="w-full">
+            <Image
+              className="h-[80vh]"
+              src={urlForImage(res.productImage[0]).url()}
+              alt="Card Image"
+              width={600}
+              height={400}
+            />
+          </div>
         </div>
-     <h1>
-     Title: {res.title}
-     </h1>
-     <h2>
-     Description: {res.description}
-     </h2>
-        <h3>
-     Price: {res.price}
-        </h3>
-            <IncdecButton/>
+
+        <div className="flex items-center justify-center">
+          <div>
+            <h1 className="text-3xl font-semibold">{res.title}</h1>
+            <h2 className="text-xl text-gray-400 ">{res.type}</h2>
+            <h3>SELECT SIZE</h3>
+            <div className="flex gap-x-10">
+              <p className="flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full">
+                XS
+              </p>
+              <p className="flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full">
+                S
+              </p>
+              <p className="flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full">
+                M
+              </p>
+              <p className="flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full">
+                L
+              </p>
+              <p className="flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full">
+                XL
+              </p>
+            </div>
+            <div className="space-y-10">
+              <IncdecButton />
+              <div className="flex items-center gap-x-4">
+                <AddToCart />
+                <h1 className="text-2xl font-bold">${res.price}</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex justify-center max-w-screen-lg mx-auto mt-10 ">
+        <div className="space-y-10">
+          <div>
+            <h1 className="text-xl font-semibold">Product Information</h1>
+          </div>
+          <hr className="h-0.5 bg-gray-400" />
+
+          <div className="space-y-6">
+            <div className="grid grid-cols-2">
+              <h1>PRODUCT DETAILS</h1>
+              <p>{res.description}</p>
+            </div>
+
+            <div className="grid grid-cols-2">
+              <h1>PRODUCT Care</h1>
+              <ul className="ml-6">
+                {res.productcare.map((items) => {
+                  return <li className="font-semibold list-disc">{items}</li>;
+                })}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default page;
+export default Page;

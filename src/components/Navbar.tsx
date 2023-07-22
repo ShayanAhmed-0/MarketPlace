@@ -28,7 +28,7 @@ const Navbar = () => {
         <Link href={"/Category/Kids"}>
           <li>Kids</li>
         </Link>
-        <Link href={"/Category/All"}>
+        <Link href={"/Category/All Products"}>
           <li>All Products</li>
         </Link>
       </ul>
@@ -85,7 +85,7 @@ const Navbar = () => {
         <Link className="flex justify-center"  href={"/Category/Kids"}>
           <li>Kids</li>
         </Link>
-        <Link className="flex justify-center"  href={"/Category/All"}>
+        <Link className="flex justify-center"  href={"/Category/All-Products"}>
           <li>All Products</li>
         </Link>
       </ul>

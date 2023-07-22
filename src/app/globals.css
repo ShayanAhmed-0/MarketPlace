@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .wrapper{
-    @apply max-w-screen-xl mx-auto 
+    @apply max-w-screen-xl mx-auto mb-20
 }
