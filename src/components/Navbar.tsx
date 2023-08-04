@@ -50,6 +50,9 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="flex gap-x-5 ">
+            <Button className="bg-gray-200 rounded-full">
+            <Link href={"/Cart"}><BiCart size={24}/></Link>
+            </Button>
             <Button  className="bg-blue-200 rounded-xl hover:bg-blue-300">
               <Link href={"/SignUp"}>SignUp</Link>
             </Button>
@@ -106,6 +109,9 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="flex gap-x-5 ">
+              <Button className="bg-gray-200 rounded-full">
+              <Link href={"/Cart"}><BiCart size={20}/></Link>
+            </Button>
             <Button  className="bg-blue-200 rounded-xl hover:bg-blue-300">
               <Link href={"/SignUp"}>SignUp</Link>
             </Button>

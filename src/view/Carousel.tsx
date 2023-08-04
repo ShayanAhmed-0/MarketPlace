@@ -52,9 +52,9 @@ const Carousel = async() => {
     const settings = {
               dots: true,
               autoplay:true,
-              autoplaySpeed: 100,
+              autoplaySpeed: 1000,
               infinite: true,
-              speed: 500,
+              speed: 4000,
               slidesToShow: 3,
               slidesToScroll: 3,
               responsive: [

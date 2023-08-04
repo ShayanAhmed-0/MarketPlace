@@ -1,55 +1,69 @@
-"use client"
+import React from 'react'
+import { cookies } from 'next/headers'
+import {v4 as uuid} from "uuid"
+import {client} from "@/lib/sanityClient" 
+const getCart = async()=>{
+  const user_id:any=cookies().get("user_id")
+  if(user_id){
+    const res = await fetch(`http://localhost:3000/api/UserCart/${user_id.value}`,{
+    method: "GET"
+  })
+  const result = await res.json()
+  return result;
+}
+return false
+  }
 
+// const getProductCart=async()=>{
+//   const resu = await client.fetch(
+//     `*[_type=="product" && _id==${data.product_id}]`
+    
+//     // `*[_type=="product && ${}"]{   
+//     //   image,
+//     //   id,
+//     //   price,
+//     //   title,           
+//     //   }`
+//   );
+//   return resu;
+// }
 
-import Image from 'next/image';
-
-import { useState } from 'react';
-
-const images = [
-  'https://i.ibb.co/fDngH9G/carosel-1.png',
-  'https://i.ibb.co/DWrGxX6/carosel-2.png',
-  'https://i.ibb.co/tCfVky2/carosel-3.png',
-  'https://i.ibb.co/rFsGfr5/carosel-4.png',
-];
-
-const Page = () => {
-  // const [selectedImage, setSelectedImage] = useState(images[0]);
-
-  // const handleImageClick = (image) => {
-  //   setSelectedImage(image);
-  // };
-
+const page = async() => {
+ 
+const results=await getCart()
+// const re=await getProductCart()
+const res=results.data
+// console.log(re)
+// console.log("results")
+// const re=results.data
   return (
-    <div className='wrapper'>
-      <div className='grid grid-cols-1 sm:grid-cols-2'>
+    <div>
+    {
+      res.length>=1?(
+        <>
+          <h1>Cart</h1>
+          {
+            res.map((items:any)=>{
 
-    <div className="flex justify-center gap-4 mx-4">
-      <div className='space-y-4'>
-      <img className="h-[10vh]" src="https://i.ibb.co/rFsGfr5/carosel-4.png" alt="img"/>
-      <img className="h-[10vh]" src="https://i.ibb.co/rFsGfr5/carosel-4.png" alt="img"/>
-      <img className="h-[10vh]" src="https://i.ibb.co/rFsGfr5/carosel-4.png" alt="img"/>
-      <img className="h-[10vh]" src="https://i.ibb.co/rFsGfr5/carosel-4.png" alt="img"/>  
+              return(
+                <>
+                <h1>{items.user_id}</h1>
+                </>
+              )
+            })
+          }
+        </>
+        )
+      :(
+        <h1>Your Cart is Empty</h1>
+      )
+    }
       </div>
-      <div className=''>
-      <img className='h-[80vh]' src="https://i.ibb.co/rFsGfr5/carosel-4.png" alt="img"/>
-      </div>
-    </div>
-
-<div>
-  <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit</h1>
-  <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam dolore repellat ab saepe delectus fugiat rerum cum officia voluptatibus minima cumque, sed adipisci praesentium ipsam deleniti non iusto quia iure!</h2>
-  <h3>1231</h3>
-</div>
-
-      </div>
-    </div>
-  );
-};
-
-export default Page;
 
 
 
+  )
+}
 
 
-
+export default page

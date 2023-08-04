@@ -1,3 +1,4 @@
+
 // Import required modules and components
 import Image from "next/image";
 import { client } from "@/lib/sanityClient";
@@ -6,6 +7,8 @@ import { urlForImage } from "../../../../sanity/lib/image";
 import ProductCard from "@/components/ProductCard";
 import IncdecButton from "@/view/IncdecButton";
 import AddToCart from "@/components/AddtoCart";
+import { useState } from "react";
+import QuantityCart from "@/view/QuantityCart";
 
 // Define the type for the product image object
 interface IProductImage extends IImage {
@@ -23,6 +26,7 @@ interface IProduct {
   price: number;
   title: string;
   type: string;
+  _id:string;
   id: number;
   category: {
     name: string;
@@ -43,6 +47,7 @@ interface ImageItem {
 }
 // Define the page component
 const Page = async ({ params }: { params: { id: string } }) => {
+
   const getProductData = async () => {
     const res = await client.fetch(
       `*[_type=="product" && id == ${params.id}]{
@@ -102,31 +107,9 @@ const Page = async ({ params }: { params: { id: string } }) => {
           <div>
             <h1 className="text-3xl font-semibold">{res.title}</h1>
             <h2 className="text-xl text-gray-400 ">{res.type}</h2>
-            <h3>SELECT SIZE</h3>
-            <div className="flex gap-x-10">
-              <p className="flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full">
-                XS
-              </p>
-              <p className="flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full">
-                S
-              </p>
-              <p className="flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full">
-                M
-              </p>
-              <p className="flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full">
-                L
-              </p>
-              <p className="flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full">
-                XL
-              </p>
-            </div>
-            <div className="space-y-10">
-              <IncdecButton />
-              <div className="flex items-center gap-x-4">
-                <AddToCart />
-                <h1 className="text-2xl font-bold">${res.price}</h1>
-              </div>
-            </div>
+            <h3 className="mt-4">SELECT SIZE</h3>
+          
+           <QuantityCart pID={res._id} pPrice={res.price}/>
           </div>
         </div>
       </div>
@@ -148,7 +131,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
               <h1>PRODUCT Care</h1>
               <ul className="ml-6">
                 {res.productcare.map((items) => {
-                  return <li className="font-semibold list-disc">{items}</li>;
+                  return <li key={items} className="font-semibold list-disc">{items}</li>;
                 })}
               </ul>
             </div>
