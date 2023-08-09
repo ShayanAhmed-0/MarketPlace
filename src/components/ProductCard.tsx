@@ -6,16 +6,6 @@ import Link from 'next/link'
 
 
 const ProductCard:FC<{item:any}> = ({item}) => {
-
-    // const handleAddToCart=async()=>{
-    //     const res = await fetch("/api/cart",{
-    //         method:"POST",
-    //         body: JSON.stringify({
-    //             product_id:item._id
-    //         })
-    //     })
-    //     const result= await res.json()
-    // }
   return (
     <div>
        <div className="max-w-sm mx-auto bg-white rounded shadow-lg">
