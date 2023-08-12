@@ -1,12 +1,12 @@
-"use client"
+
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react'
 
 import { client } from "@/lib/sanityClient";
 import { Image as IImage } from "sanity";
 import { urlForImage } from '../../sanity/lib/image'
 import { Button } from './ui/button';
+import CheckOutButton from './CheckOutButton';
 
 interface IProduct {
     image:IImage;
@@ -34,7 +34,6 @@ const Card=({_id,image,price,title,quantity}:IProduct)=>{
     )
 }
 const CartCard = async({pid,quantity,calcu}:any) => {
-    const [count,setCount]=useState(0)
 
     const getCartData = async () => {
         const res = await client.fetch(
@@ -51,7 +50,6 @@ const CartCard = async({pid,quantity,calcu}:any) => {
                 return res;
                 }
       const data:IProduct[]=await getCartData()
-      console.log(data)
   return (
     <div className=''>
         <div>
@@ -61,7 +59,7 @@ const CartCard = async({pid,quantity,calcu}:any) => {
                         <div className='flex justify-between'>
                     <Card _id={i._id} image={i.image} price={i.price} title={i.title} quantity={quantity}/>
                     <div className='flex items-center'>
-                    <Button className='text-white bg-black'>CheckOut</Button>
+                    <CheckOutButton/>
                     </div>
                 </div>
                     )
