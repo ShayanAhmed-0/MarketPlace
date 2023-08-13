@@ -2,26 +2,6 @@
 import getStripePromise from "@/lib/stripe";
 import { loadStripe } from "@stripe/stripe-js";
 
-// const products = [
-//   {
-//     product: 1,
-//     name: "Stripe Product",
-//     price: 400,
-//     quantity: 3,
-//   },
-//   {
-//     product: 2,
-//     name: "Stripe Product2",
-//     price: 40,
-//     quantity: 2,
-//   },
-//   {
-//     product: 3,
-//     name: "Stripe Product23",
-//     price: 4000,
-//     quantity: 1,
-//   },
-// ];
 const StripeCheckOutButton = ({quantity,price,name}:any) => {
   const handleCheckout = async () => {
     const stripe = await getStripePromise();

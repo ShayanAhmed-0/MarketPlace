@@ -7,7 +7,7 @@ const CardsDetails = ({res}:any) => {
     <div>
        <div className='space-y-10'>
       {
-        res.map((i:any)=><div key={i.product_id}><CartCard pid={i.product_id} quantity={i.quantity}/></div>)
+        res?.map((i:any)=><div key={i.product_id}><CartCard pid={i.product_id} quantity={i.quantity}/></div>)
       }
       </div>
     </div>
