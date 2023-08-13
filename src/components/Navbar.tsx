@@ -15,7 +15,7 @@ const Navbar = () => {
   const { isSignedIn } = useUser();
   return (
     <div className="flex items-center justify-between mx-8 my-6">
-      <Link href={"/"}>
+      <Link href="/">
       <Image src={logo} alt="navbarImg" />
       </Link>
       <ul className="hidden text-lg font-semibold lg:flex gap-x-10 ">
