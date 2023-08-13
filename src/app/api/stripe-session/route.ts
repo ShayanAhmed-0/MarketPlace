@@ -7,49 +7,52 @@ const stripe = new Stripe(key, {
   apiVersion: "2022-11-15",
 });
 
+async function createLineItem(item: any) {
+  return {
+    price_data: {
+      currency: "pkr",
+      product_data: {
+        name: item.name,
+      },
+      unit_amount: item.price * 100,
+    },
+    quantity: item.quantity,
+    adjustable_quantity: {
+      enabled: true,
+      minimum: 1,
+      maximum: 10,
+    },
+  };
+}
+
 export async function POST(request: NextRequest) {
   const body = await request.json();
   console.log(body);
+
   try {
-    if (body.length > 0) {
+      const lineItem = await createLineItem(body);
       const session = await stripe.checkout.sessions.create({
         submit_type: "pay",
         mode: "payment",
         payment_method_types: ["card"],
         billing_address_collection: "auto",
         shipping_options: [
-            {shipping_rate:"shr_1NeLHdSBay38KyVzzlXQ63F3"},{shipping_rate:"shr_1NeLGBSBay38KyVzYDbehpdZ"}
+          { shipping_rate: "shr_1NeLHdSBay38KyVzzlXQ63F3" },
+          { shipping_rate: "shr_1NeLGBSBay38KyVzYDbehpdZ" },
         ],
         invoice_creation: {
           enabled: true,
         },
-        line_items: body.map((item: any) => {
-          return {
-            price_data: {
-              currency: "pkr",
-              product_data: {
-                name: item.name,
-              },
-              unit_amount: item.price * 100,
-            },
-            quantity: item.quantity,
-            adjustable_quantity: {
-              enabled: true,
-              minimum: 1,
-              maximum: 10,
-            },
-          };
-        }),
+        line_items: [lineItem],
         phone_number_collection: {
           enabled: true,
         },
         success_url: `${request.headers.get("origin")}/success`,
         cancel_url: `${request.headers.get("origin")}/?canceled=true`,
       });
+
       return NextResponse.json({ session });
-    } else {
-      return NextResponse.json({ message: "No Data Found" });
-    }
+    
   } catch (err: any) {
     console.log(err);
     return NextResponse.json(err.message);

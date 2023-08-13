@@ -59,7 +59,7 @@ const CartCard = async({pid,quantity,calcu}:any) => {
                         <div className='flex justify-between'>
                     <Card _id={i._id} image={i.image} price={i.price} title={i.title} quantity={quantity}/>
                     <div className='flex items-center'>
-                    <CheckOutButton/>
+                    <CheckOutButton quantity={quantity} price={i.price} name={i.title}/>
                     </div>
                 </div>
                     )
