@@ -14,10 +14,11 @@ interface IProduct {
     title: string;
     _id: string;
     quantity:number;
+    id:number;
 
 }
 
-const Card=({_id,image,price,title,quantity}:IProduct)=>{
+const Card=({id,_id,image,price,title,quantity}:IProduct)=>{
     const img= urlForImage(image).url();
     return(
         <div className='flex gap-4'>
@@ -38,6 +39,7 @@ const CartCard = async({pid,quantity,calcu}:any) => {
     const getCartData = async () => {
         const res = await client.fetch(
                   `*[_type=="product" && _id == "${pid}"]{
+                    id,
                     type,
                     price,
                     title,
@@ -56,8 +58,8 @@ const CartCard = async({pid,quantity,calcu}:any) => {
             {
                 data && data.map((i)=>{
                     return(
-                        <div className='flex justify-between'>
-                    <Card _id={i._id} image={i.image} price={i.price} title={i.title} quantity={quantity}/>
+                        <div key={i.id} className='flex justify-between'>
+                    <Card id={i.id} _id={i._id} image={i.image} price={i.price} title={i.title} quantity={quantity}/>
                     <div className='flex items-center'>
                     <CheckOutButton quantity={quantity} price={i.price} name={i.title}/>
                     </div>
