@@ -17,11 +17,6 @@ async function createLineItem(item: any) {
       unit_amount: item.price * 100,
     },
     quantity: item.quantity,
-    adjustable_quantity: {
-      enabled: true,
-      minimum: 1,
-      maximum: 10,
-    },
   };
 }
 
