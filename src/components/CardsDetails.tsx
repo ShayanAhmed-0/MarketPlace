@@ -5,7 +5,7 @@ const getCart = async (uid:string) => {
   try {
     const res = await fetch(`http://nextmartjs.vercel.app/api/UserCart/${uid}`, {
       method: "GET",
-      cache: "no-store",
+      cache: "no-cache",
     });
 
     if (!res.ok) {
