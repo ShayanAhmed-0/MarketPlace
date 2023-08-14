@@ -77,7 +77,7 @@ const Navbar = () => {
 
 {/* hamburger options */}
 {
-  open && <div className="absolute z-50 space-y-4 text-white bg-black mt-60 right-4">
+  open && <div className="absolute z-50 space-y-4 bg-white mt-60 right-4">
      <ul className="text-lg font-semibold lg:hidden gap-x-10">
         <Link href={"/Category/Female"}>
           <li className="flex justify-center">Female</li>
