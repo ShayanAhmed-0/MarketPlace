@@ -5,7 +5,7 @@ const getCart = async (uid:string) => {
   try {
     const res = await fetch(`http://nextmartjs.vercel.app/api/UserCart/${uid}`, {
       method: "GET",
-      cache: "no-cache",
+      cache: "no-store",
     });
 
     if (!res.ok) {
@@ -28,7 +28,7 @@ const CardsDetails = async({uid}:string|any) => {
        <div className='space-y-10'>
       {
         res.length>0?
-        res?.map((i:any)=>(<div className='m-20' key={i.product_id}><CartCard id={i.id} pid={i.product_id} quantity={i.quantity} size={i.size}/></div>))
+        res?.map((i:any)=>(<div className='m-2 sm:m-20' key={i.product_id}><CartCard id={i.id} pid={i.product_id} quantity={i.quantity} size={i.size}/></div>))
         :
         <div className='flex justify-center h-[40vh]'>
         <h1 className='text-3xl'>Your Cart is Empty</h1>

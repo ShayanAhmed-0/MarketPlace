@@ -37,7 +37,7 @@ const StripeCheckOutButton = ({quantity,price,name,size,id}:any) => {
   }
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-1 sm:gap-4">
       <button
         className="px-3 py-3 text-white duration-500 bg-black rounded-xl hover:scale-125"
       onClick={handleCheckout}
