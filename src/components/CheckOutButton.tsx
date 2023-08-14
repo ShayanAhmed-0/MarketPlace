@@ -2,8 +2,21 @@
 import getStripePromise from "@/lib/stripe";
 import {MdDeleteForever} from "react-icons/md"
 
+const handleDel = async (id:any) => {
+  try {
+    const res = await fetch(`/api/UserCart/id/${id}`, {
+      method: 'DELETE'
+    });
+    const data = await res.json();
+  } catch (error) {
+    console.log("Delete handle");
+  }
+}
+
+
 const StripeCheckOutButton = ({quantity,price,name,size,id}:any) => {
   const handleCheckout = async () => {
+    handleDel(id)
     const stripe = await getStripePromise();
     const response = await fetch("/api/stripe-session/", {
       method: "POST",
@@ -25,17 +38,7 @@ const StripeCheckOutButton = ({quantity,price,name,size,id}:any) => {
     } 
   };
 
-  const handleDel = async () => {
-    try {
-      const res = await fetch(`/api/UserCart/id/${id}`, {
-        method: 'DELETE'
-      });
-      const data = await res.json();
-    } catch (error) {
-      console.log("Delete handle");
-    }
-  }
-
+  
   return (
     <div className="flex items-center gap-1 sm:gap-4">
       <button
@@ -46,7 +49,7 @@ const StripeCheckOutButton = ({quantity,price,name,size,id}:any) => {
       </button>
       <button
         className="text-gray-400 duration-500 hover:text-red-600 hover:animate-pulse hover:scale-125"
-        onClick={handleDel}
+        onClick={()=>handleDel(id)}
       >
         <MdDeleteForever size={25}/>
       </button>
