@@ -22,7 +22,6 @@ async function createLineItem(item: any) {
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  console.log(body);
 
   try {
       const lineItem = await createLineItem(body);
@@ -49,7 +48,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ session });
     
   } catch (err: any) {
-    console.log(err);
     return NextResponse.json(err.message);
   }
 }

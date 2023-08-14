@@ -1,11 +1,7 @@
-
 import Image from 'next/image';
-import Link from 'next/link';
-
 import { client } from "@/lib/sanityClient";
 import { Image as IImage } from "sanity";
 import { urlForImage } from '../../sanity/lib/image'
-import { Button } from './ui/button';
 import CheckOutButton from './CheckOutButton';
 
 interface IProduct {
@@ -15,10 +11,11 @@ interface IProduct {
     _id: string;
     quantity:number;
     id:number;
+    size:string
 
 }
 
-const Card=({id,_id,image,price,title,quantity}:IProduct)=>{
+const Card=({id,_id,image,price,title,quantity,size}:IProduct)=>{
     const img= urlForImage(image).url();
     return(
         <div className='flex gap-4'>
@@ -27,6 +24,7 @@ const Card=({id,_id,image,price,title,quantity}:IProduct)=>{
                 <div>
             <h1>Title: {title}</h1>
             <h1>Price: {price}</h1>
+            <h1>size: {size}</h1>
             <h1>Quantity: {quantity}</h1>
             <h1>total:{quantity*price}</h1>
                 </div>
@@ -34,7 +32,7 @@ const Card=({id,_id,image,price,title,quantity}:IProduct)=>{
         </div>
     )
 }
-const CartCard = async({pid,quantity,calcu}:any) => {
+const CartCard = async({id,pid,quantity,size}:any) => {
 
     const getCartData = async () => {
         const res = await client.fetch(
@@ -59,9 +57,9 @@ const CartCard = async({pid,quantity,calcu}:any) => {
                 data && data.map((i)=>{
                     return(
                         <div key={i.id} className='flex justify-between'>
-                    <Card id={i.id} _id={i._id} image={i.image} price={i.price} title={i.title} quantity={quantity}/>
+                    <Card id={i.id} _id={i._id} image={i.image} price={i.price} title={i.title} quantity={quantity} size={size}/>
                     <div className='flex items-center'>
-                    <CheckOutButton quantity={quantity} price={i.price} name={i.title}/>
+                    <CheckOutButton quantity={quantity} price={i.price} name={i.title} size={size} id={id}/>
                     </div>
                 </div>
                     )

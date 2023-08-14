@@ -1,7 +1,5 @@
-import Image from "next/image";
 import { client } from "@/lib/sanityClient";
 import { Image as IImage } from "sanity";
-import { urlForImage } from "../../../../sanity/lib/image";
 import ProductCard from "@/components/ProductCard";
 
 const page = async ({ params }: { params: { type: string } }) => {

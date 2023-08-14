@@ -1,8 +1,8 @@
 "use client";
 import getStripePromise from "@/lib/stripe";
-import { loadStripe } from "@stripe/stripe-js";
+import {MdDeleteForever} from "react-icons/md"
 
-const StripeCheckOutButton = ({quantity,price,name}:any) => {
+const StripeCheckOutButton = ({quantity,price,name,size,id}:any) => {
   const handleCheckout = async () => {
     const stripe = await getStripePromise();
     const response = await fetch("/api/stripe-session/", {
@@ -12,9 +12,12 @@ const StripeCheckOutButton = ({quantity,price,name}:any) => {
       body: JSON.stringify({
         name:name,
         price:price,
-        quantity:quantity
+        quantity:quantity,
+        size:size
       }),
     });
+
+   
 
     const data = await response.json();
     if (data.session) {
@@ -22,13 +25,30 @@ const StripeCheckOutButton = ({quantity,price,name}:any) => {
     } 
   };
 
+  const handleDel = async () => {
+    try {
+      const res = await fetch(`/api/UserCart/id/${id}`, {
+        method: 'DELETE'
+      });
+      const data = await res.json();
+    } catch (error) {
+      console.log("Delete handle");
+    }
+  }
+
   return (
-    <div className="py-5">
+    <div className="flex items-center gap-4">
       <button
-        className="px-3 py-3 bg-green-500 rounded-md"
-        onClick={handleCheckout}
-      >
+        className="px-3 py-3 text-white duration-500 bg-black rounded-xl hover:scale-125"
+      onClick={handleCheckout}
+        >
         Check out
+      </button>
+      <button
+        className="text-gray-400 duration-500 hover:text-red-600 hover:animate-pulse hover:scale-125"
+        onClick={handleDel}
+      >
+        <MdDeleteForever size={25}/>
       </button>
     </div>
   );

@@ -1,13 +1,7 @@
-
-// Import required modules and components
 import Image from "next/image";
 import { client } from "@/lib/sanityClient";
 import { Image as IImage } from "sanity";
 import { urlForImage } from "../../../../sanity/lib/image";
-import ProductCard from "@/components/ProductCard";
-import IncdecButton from "@/view/IncdecButton";
-import AddToCart from "@/components/AddtoCart";
-import { useState } from "react";
 import QuantityCart from "@/view/QuantityCart";
 
 // Define the type for the product image object
@@ -109,7 +103,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
             <h2 className="text-xl text-gray-400 ">{res.type}</h2>
             <h3 className="mt-4">SELECT SIZE</h3>
           
-           <QuantityCart pID={res._id} pPrice={res.price}/>
+           <QuantityCart pID={res._id} pPrice={res.price} title={res.title}/>
           </div>
         </div>
       </div>

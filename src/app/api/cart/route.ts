@@ -5,15 +5,6 @@ import { sql } from '@vercel/postgres';
 import {v4 as uuid} from "uuid"
 import { cookies } from "next/headers"
 
-export async function GET(request:NextRequest){
-    try{
-    const res = await db.select().from(cartTable)
-    return NextResponse.json({data:res})
-}catch(err){
-    return NextResponse.json({Error:err})
-}
-}
-
 export const POST=async(request:NextRequest)=>{
     const req = await request.json()
     const uid=uuid()

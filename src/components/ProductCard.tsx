@@ -1,42 +1,33 @@
-"use client"
-import React, { FC } from 'react'
-import Image from 'next/image'
-import { urlForImage } from '../../sanity/lib/image'
-import Link from 'next/link'
+import React, { FC } from "react";
+import Image from "next/image";
+import { urlForImage } from "../../sanity/lib/image";
+import Link from "next/link";
 
-
-const ProductCard:FC<{item:any}> = ({item}) => {
+const ProductCard: FC<{ item: any }> = ({ item }) => {
   return (
     <div>
-       <div className="max-w-sm mx-auto bg-white rounded shadow-lg">
-  <Link href={`/Product/${item.id}`}>
-
-        {item.image?.asset && (
-          <Image
-          className=" w-full max-h-[200px]"
-          src={urlForImage(item.image).url()}
-          alt="Card Image"
-          width={400}
-          height={300}
-          />
+      <Link href={`/Product/${item.id}`}>
+        <div className="max-w-sm mx-auto bg-white rounded shadow-lg">
+          {item.image?.asset && (
+            <Image
+              className=" w-full max-h-[200px]"
+              src={urlForImage(item.image).url()}
+              alt="Card Image"
+              width={400}
+              height={300}
+            />
           )}
-          </Link>
-          
+
           <div className="p-4">
-            <h2 className="text-xl font-semibold text-gray-800">{item.title}</h2>
-            {/* <p className="text-gray-600">{item.description}</p> */}
-              <p className="text-lg font-bold text-gray-800">${item.price}</p>
-            </div>
-            {/* <div className="flex items-center justify-between mx-8 mt-4">
-
-              <p className="text-lg font-bold text-gray-800">${item.price}</p>
-              <button onClick={handleAddToCart} className="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">
-                Add To Cart
-              </button>
-          </div> */}
+            <h2 className="text-xl font-semibold text-gray-800">
+              {item.title}
+            </h2>
+            <p className="text-lg font-bold text-gray-800">${item.price}</p>
+          </div>
         </div>
+      </Link>
     </div>
-  )
-}
+  );
+};
 
-export default ProductCard
+export default ProductCard;

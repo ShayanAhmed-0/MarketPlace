@@ -1,7 +1,5 @@
-import { QueryResult } from '@vercel/postgres';
 import { NextRequest,NextResponse } from 'next/server'; 
 import {db,cartTable} from "../../../../lib/drizzle"
-import { sql } from '@vercel/postgres';
 import {eq} from "drizzle-orm"
 import {v4 as uuid} from "uuid"
 import { cookies } from "next/headers"
@@ -38,13 +36,4 @@ const user_id=cookies().get("user_id")
     }
     }
 
-// export async function POST(request:NextRequest){
-//     const req = await request.json()
-//     try {
-//         const res= await db.insert(cartTable).values({
-//             user_id:
-//         })
-//     } catch (error) {
-        
-//     }
-// }
+  

@@ -1,4 +1,3 @@
-import React from 'react'
 import Hero from './Hero'
 import Promotions from './Promotions'
 import Carousel from './Carousel'
