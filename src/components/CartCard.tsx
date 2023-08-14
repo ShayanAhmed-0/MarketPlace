@@ -75,4 +75,3 @@ const CartCard = async({id,pid,quantity,size}:any) => {
 
 export default CartCard
 
-

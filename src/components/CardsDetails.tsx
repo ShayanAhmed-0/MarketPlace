@@ -3,7 +3,7 @@ import CartCard from './CartCard'
 
 const getCart = async (uid:string) => {
   try {
-    const res = await fetch(`http://localhost:3000/api/UserCart/${uid}`, {
+    const res = await fetch(`http://nextmartjs.vercel.app/api/UserCart/${uid}`, {
       method: "GET",
       cache: "no-cache",
     });
