@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "./ui/button";
 import { BiCart } from "react-icons/bi";
 import { useToast } from "@/components/ui/use-toast";
+import { useRouter } from 'next/navigation'
 
 const AddToCart = ({
   pID,
@@ -17,6 +18,7 @@ const AddToCart = ({
   price: number;
 }) => {
   const { toast } = useToast();
+  const router = useRouter()
 
   const handleAddtocart = async () => {
     const res = await fetch("/api/cart", {
@@ -28,9 +30,13 @@ const AddToCart = ({
       }),
     });
     const result = await res.json();
+ 
+    router.refresh()
+
   };
 
   return (
+    
     <div>
       <Button
         onClick={() => {

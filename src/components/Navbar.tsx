@@ -28,7 +28,7 @@ const Navbar = () => {
         <Link href={"/Category/Kids"}>
           <li>Kids</li>
         </Link>
-        <Link href={"/Category/All Products"}>
+        <Link href={"/Category/All-Products"}>
           <li>All Products</li>
         </Link>
       </ul>
