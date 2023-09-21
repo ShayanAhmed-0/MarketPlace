@@ -1,20 +1,25 @@
 "use client";
 import getStripePromise from "@/lib/stripe";
+import { useRouter } from "next/navigation";
 import {MdDeleteForever} from "react-icons/md"
 
-const handleDel = async (id:any) => {
-  try {
-    const res = await fetch(`/api/UserCart/id/${id}`, {
-      method: 'DELETE'
-    });
-    const data = await res.json();
-  } catch (error) {
-    console.log("Delete handle");
-  }
-}
+
 
 
 const StripeCheckOutButton = ({quantity,price,name,size,id}:any) => {
+  const router = useRouter()
+  const handleDel = async (id:any) => {
+    try {
+      const res = await fetch(`/api/UserCart/id/${id}`, {
+        method: 'DELETE'
+      });
+      const data = await res.json();
+      router.refresh()
+    } catch (error) {
+      console.log("Delete handle");
+    }
+  
+  }
   const handleCheckout = async () => {
     handleDel(id)
     const stripe = await getStripePromise();
