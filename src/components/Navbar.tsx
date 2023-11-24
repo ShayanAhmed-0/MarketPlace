@@ -109,15 +109,18 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="flex gap-x-5 ">
-              <Button className="bg-gray-200 rounded-full">
-              <Link href={"/Cart"}><BiCart size={20}/></Link>
-            </Button>
+              
+              <Link href={"/Cart"}><Button className="bg-gray-200 rounded-full"><BiCart size={20}/></Button></Link>
+            <Link href={"/SignUp"}>
             <Button  className="bg-blue-200 rounded-xl hover:bg-blue-300">
-              <Link href={"/SignUp"}>SignUp</Link>
+              SignUp
             </Button>
+              </Link>
+            <Link href={"/SignIn"}>
             <Button className="bg-blue-200 rounded-xl hover:bg-blue-300">
-              <Link href={"/SignIn"}>SignIn</Link>
+              SignIn
             </Button>
+              </Link>
           </div>
         )}
       </div>
